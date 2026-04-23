@@ -13,6 +13,7 @@ int main()
     float rendu;
     int   cptCafe = 0, cptThe = 0, cptChoco = 0, cptCapp = 0;
     float ca = 0;
+    
 
     FILE *f;
     FILE *caFile;
@@ -69,9 +70,9 @@ int main()
         printf("Cafe Court");
         for (int i = 0; i <= 20; i++) printf(".");
         textcolor(GREEN);
-        printf(" 0.40 EUR");
+        printf(" 4.00 DH");
         textcolor(WHITE);
-        printf(" *\n\n");
+        printf("  *\n\n");
 
         printf("* ");
         textcolor(YELLOW);
@@ -80,9 +81,9 @@ int main()
         printf("The a la Menthe");
         for (int i = 0; i <= 15; i++) printf(".");
         textcolor(GREEN);
-        printf(" 0.50 EUR");
+        printf(" 5.00 DH");
         textcolor(WHITE);
-        printf(" *\n\n");
+        printf("  *\n\n");
 
         printf("* ");
         textcolor(YELLOW);
@@ -91,9 +92,9 @@ int main()
         printf("Chocolat Chaud");
         for (int i = 0; i <= 16; i++) printf(".");
         textcolor(GREEN);
-        printf(" 0.60 EUR");
+        printf(" 6.00 DH");
         textcolor(WHITE);
-        printf(" *\n\n");
+        printf("  *\n\n");
 
         printf("* ");
         textcolor(YELLOW);
@@ -102,9 +103,9 @@ int main()
         printf("Cappuccino");
         for (int i = 0; i <= 20; i++) printf(".");
         textcolor(GREEN);
-        printf(" 0.80 EUR");
+        printf(" 8.00 DH");
         textcolor(WHITE);
-        printf(" *\n\n");
+        printf("  *\n\n");
 
         printf("* *\n\n");
         printf("* ");
@@ -131,37 +132,45 @@ int main()
             printf("\n");
             do
             {
-                printf("Inserez une piece (0.10 / 0.20 / 0.50 / 1.00 / 2.00) : ");
+                printf("Inserez une piece (1 / 2 / 5 / 10 / 20 DH) : ");
                 float piece;
+                
                 scanf("%f", &piece);
+                
 
-                if (piece != 0.10  &&
-                        piece != 0.20  &&
-                        piece != 0.50  &&
-                        piece != 1 &&
-                        piece != 2)
+                if (piece != 1 && piece != 2 && piece != 5 && piece != 10 && piece != 20)
                 {
                     textcolor(RED);
-                    printf("Piece invalide!\n");
+                    printf("Piece invalide !\n");
                     textcolor(WHITE);
                 }
                 else
                 {
                     money += piece;
-                    if (money < 0.40)
+                    textcolor(YELLOW);
+                    printf("Montant insere : %.2f DH\n", money);
+                    textcolor(WHITE);
+                    
+                    if (money < 4.00)
                     {
-                        textcolor(YELLOW);
-                        printf("Montant insere : %.2f EUR  |  Reste : %.2f EUR\n", money, 0.40f - money);
+                        textcolor(RED);
+                        printf("Il vous reste %.2f DH a payer\n", 4.00f - money);
+                        textcolor(WHITE);
+                    }
+                    else
+                    {
+                        textcolor(GREEN);
+                        printf("Montant suffisant atteint !\n");
                         textcolor(WHITE);
                     }
                 }
             }
-            while (money < 0.40);
+            while (money < 4.00);
 
-            rendu = money - 0.40f;
+            rendu = money - 4.00f;
             cptCafe++;
-            ca += 0.40f;
-            fprintf(f, "Produit: Cafe Court | Prix: 0.40 EUR | Monnaie: %.2f EUR | Rendu: %.2f EUR\n", money, rendu);
+            ca += 4.00f;
+            fprintf(f, "Produit: Cafe Court | Prix: 4.00 DH | Monnaie: %.2f DH | Rendu: %.2f DH\n", money, rendu);
 
             printf("\nPreparation en cours");
             for (int i = 0; i < 5; i++)
@@ -171,7 +180,7 @@ int main()
             }
             printf("\n\nRendu : ");
             textcolor(GREEN);
-            printf("%.2f EUR\n", rendu);
+            printf("%.2f DH\n", rendu);
             textcolor(WHITE);
             system("pause");
         }
@@ -183,37 +192,44 @@ int main()
             printf("\n");
             do
             {
-                printf("Inserez une piece (0.10 / 0.20 / 0.50 / 1.00 / 2.00) : ");
+                printf("Inserez une piece (1 / 2 / 5 / 10 / 20 DH) : ");
                 float piece;
                 scanf("%f", &piece);
+                
 
-                if (piece != 0.10  &&
-                        piece != 0.20  &&
-                        piece != 0.50  &&
-                        piece != 1 &&
-                        piece != 2)
+                if (piece != 1 && piece != 2 && piece != 5 && piece != 10 && piece != 20)
                 {
                     textcolor(RED);
-                    printf("Piece invalide!\n");
+                    printf("Piece invalide !\n");
                     textcolor(WHITE);
                 }
                 else
                 {
                     money += piece;
-                    if (money < 0.50)
+                    textcolor(YELLOW);
+                    printf("Montant insere : %.2f DH\n", money);
+                    textcolor(WHITE);
+                    
+                    if (money < 5.00)
                     {
-                        textcolor(YELLOW);
-                        printf("Montant insere : %.2f EUR  |  Reste : %.2f EUR\n", money, 0.50f - money);
+                        textcolor(RED);
+                        printf("Il vous reste %.2f DH a payer\n", 5.00f - money);
+                        textcolor(WHITE);
+                    }
+                    else
+                    {
+                        textcolor(GREEN);
+                        printf("Montant suffisant atteint !\n");
                         textcolor(WHITE);
                     }
                 }
             }
-            while (money < 0.50);
+            while (money < 5.00);
 
-            rendu = money - 0.50f;
+            rendu = money - 5.00f;
             cptThe++;
-            ca += 0.50f;
-            fprintf(f, "Produit: The a la Menthe | Prix: 0.50 EUR | Monnaie: %.2f EUR | Rendu: %.2f EUR\n", money, rendu);
+            ca += 5.00f;
+            fprintf(f, "Produit: The a la Menthe | Prix: 5.00 DH | Monnaie: %.2f DH | Rendu: %.2f DH\n", money, rendu);
 
             printf("\nPreparation en cours");
             for (int i = 0; i < 5; i++)
@@ -223,7 +239,7 @@ int main()
             }
             printf("\n\nRendu : ");
             textcolor(GREEN);
-            printf("%.2f EUR\n", rendu);
+            printf("%.2f DH\n", rendu);
             textcolor(WHITE);
             system("pause");
         }
@@ -235,37 +251,44 @@ int main()
             printf("\n");
             do
             {
-                printf("Inserez une piece (0.10 / 0.20 / 0.50 / 1.00 / 2.00) : ");
+                printf("Inserez une piece (1 / 2 / 5 / 10 / 20 DH) : ");
                 float piece;
                 scanf("%f", &piece);
+            
 
-                if (piece != 0.10  &&
-                        piece != 0.20  &&
-                        piece != 0.50  &&
-                        piece != 1 &&
-                        piece != 2)
+                if (piece != 1 && piece != 2 && piece != 5 && piece != 10 && piece != 20)
                 {
                     textcolor(RED);
-                    printf("Piece invalide!\n");
+                    printf("Piece invalide !\n");
                     textcolor(WHITE);
                 }
                 else
                 {
                     money += piece;
-                    if (money < 0.60)
+                    textcolor(YELLOW);
+                    printf("Montant insere : %.2f DH\n", money);
+                    textcolor(WHITE);
+                    
+                    if (money < 6.00)
                     {
-                        textcolor(YELLOW);
-                        printf("Montant insere : %.2f EUR  |  Reste : %.2f EUR\n", money, 0.60f - money);
+                        textcolor(RED);
+                        printf("Il vous reste %.2f DH a payer\n", 6.00f - money);
+                        textcolor(WHITE);
+                    }
+                    else
+                    {
+                        textcolor(GREEN);
+                        printf("Montant suffisant atteint !\n");
                         textcolor(WHITE);
                     }
                 }
             }
-            while (money < 0.60);
+            while (money < 6.00);
 
-            rendu = money - 0.60f;
+            rendu = money - 6.00f;
             cptChoco++;
-            ca += 0.60f;
-            fprintf(f, "Produit: Chocolat Chaud | Prix: 0.60 EUR | Monnaie: %.2f EUR | Rendu: %.2f EUR\n", money, rendu);
+            ca += 6.00f;
+            fprintf(f, "Produit: Chocolat Chaud | Prix: 6.00 DH | Monnaie: %.2f DH | Rendu: %.2f DH\n", money, rendu);
 
             printf("\nPreparation en cours");
             for (int i = 0; i < 5; i++)
@@ -275,7 +298,7 @@ int main()
             }
             printf("\n\nRendu : ");
             textcolor(GREEN);
-            printf("%.2f EUR\n", rendu);
+            printf("%.2f DH\n", rendu);
             textcolor(WHITE);
             system("pause");
         }
@@ -287,37 +310,44 @@ int main()
             printf("\n");
             do
             {
-                printf("Inserez une piece (0.10 / 0.20 / 0.50 / 1.00 / 2.00) : ");
+                printf("Inserez une piece (1 / 2 / 5 / 10 / 20 DH) : ");
                 float piece;
                 scanf("%f", &piece);
+                
 
-                if (piece != 0.10  &&
-                        piece != 0.20  &&
-                        piece != 0.50  &&
-                        piece != 1 &&
-                        piece != 2)
+                if (piece != 1 && piece != 2 && piece != 5 && piece != 10 && piece != 20)
                 {
                     textcolor(RED);
-                    printf("Piece invalide!\n");
+                    printf("Piece invalide !\n");
                     textcolor(WHITE);
                 }
                 else
                 {
                     money += piece;
-                    if (money < 0.80)
+                    textcolor(YELLOW);
+                    printf("Montant insere : %.2f DH\n", money);
+                    textcolor(WHITE);
+                    
+                    if (money < 8.00)
                     {
-                        textcolor(YELLOW);
-                        printf("Montant insere : %.2f EUR  |  Reste : %.2f EUR\n", money, 0.80f - money);
+                        textcolor(RED);
+                        printf("Il vous reste %.2f DH a payer\n", 8.00f - money);
+                        textcolor(WHITE);
+                    }
+                    else
+                    {
+                        textcolor(GREEN);
+                        printf("Montant suffisant atteint !\n");
                         textcolor(WHITE);
                     }
                 }
             }
-            while (money < 0.80);
+            while (money < 8.00);
 
-            rendu = money - 0.80f;
+            rendu = money - 8.00f;
             cptCapp++;
-            ca += 0.80f;
-            fprintf(f, "Produit: Cappuccino | Prix: 0.80 EUR | Monnaie: %.2f EUR | Rendu: %.2f EUR\n", money, rendu);
+            ca += 8.00f;
+            fprintf(f, "Produit: Cappuccino | Prix: 8.00 DH | Monnaie: %.2f DH | Rendu: %.2f DH\n", money, rendu);
 
             printf("\nPreparation en cours");
             for (int i = 0; i < 5; i++)
@@ -327,7 +357,7 @@ int main()
             }
             printf("\n\nRendu : ");
             textcolor(GREEN);
-            printf("%.2f EUR\n", rendu);
+            printf("%.2f DH\n", rendu);
             textcolor(WHITE);
             system("pause");
         }
@@ -457,7 +487,7 @@ int main()
                         {
                             printf("\n=== ETAT DE LA CAISSE ===\n");
                             textcolor(GREEN);
-                            printf("Chiffre d'affaires total : %.2f EUR\n", ca);
+                            printf("Chiffre d'affaires total : %.2f DH\n", ca);
                             textcolor(WHITE);
                             system("pause");
                         }
